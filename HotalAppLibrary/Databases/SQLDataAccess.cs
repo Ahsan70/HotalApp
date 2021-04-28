@@ -41,7 +41,7 @@ namespace HotalAppLibrary.Databases
             }
         }
 
-
+      
         public void SaveData<T>(string sqlStatement,
                                     T parameters,
                                     string connectionStringName,
@@ -67,5 +67,7 @@ namespace HotalAppLibrary.Databases
 
             }
         }
+
+      
     }
 }
