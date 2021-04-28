@@ -9,7 +9,7 @@ using System.Text;
 
 namespace HotalAppLibrary.Databases
 {
-   public class SQLDataAccess
+    public class SQLDataAccess : ISQLDataAccess
     {
         private readonly IConfiguration _configuration;
 
@@ -17,15 +17,54 @@ namespace HotalAppLibrary.Databases
         {
             _configuration = configuration;
         }
-        public List<T> LoadData<T,U>(string sqlStatement,
+        public List<T> LoadData<T, U>(string sqlStatement,
                                      U parameters,
-                                     string connectionStringName)
+                                     string connectionStringName,
+                                     bool isStoredProcedure = false)
         {
             string connectionString = _configuration.GetConnectionString(connectionStringName);
-            using (IDbConnection connection =new SqlConnection(connectionString))
+            using (IDbConnection connection = new SqlConnection(connectionString))
             {
-                List<T> rows = connection.Query<T>(sqlStatement,parameters).ToList();
+                CommandType commandType = CommandType.Text;
+
+                if (!(isStoredProcedure = true))
+                {
+                }
+                else
+                {
+                    commandType = CommandType.StoredProcedure;
+                }
+                List<T> rows = connection.Query<T>(sqlStatement,
+                                                   parameters,
+                                                   commandType: commandType).ToList();
                 return rows;
+            }
+        }
+
+
+        public void SaveData<T>(string sqlStatement,
+                                    T parameters,
+                                    string connectionStringName,
+                                    bool isStoredProcedure = false)
+        {
+
+            string connectionString = _configuration.GetConnectionString(connectionStringName);
+            using (IDbConnection connection = new SqlConnection(connectionString))
+            {
+                CommandType commandType = CommandType.Text;
+
+
+                if (!(isStoredProcedure = true))
+                {
+                }
+                else
+                {
+                    commandType = CommandType.StoredProcedure;
+                }
+                connection.Execute(sqlStatement,
+                                                    parameters,
+                                                    commandType: commandType);
+
             }
         }
     }
