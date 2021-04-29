@@ -1,8 +1,8 @@
-﻿using HotalAppLibrary.Models;
+﻿using HotelAppLibrary.Models;
 using System;
 using System.Collections.Generic;
 
-namespace HotalAppLibrary.Data
+namespace HotelAppLibrary.Data
 {
     public interface IDatabaseData
     {

@@ -1,5 +1,5 @@
-using HotalAppLibrary.Data;
-using HotalAppLibrary.Databases;
+using HotelAppLibrary.Data;
+using HotelAppLibrary.Databases;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

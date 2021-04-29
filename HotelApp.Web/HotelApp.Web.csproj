@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HotalAppLibrary\HotelAppLibrary.csproj" />
+    <ProjectReference Include="..\HotelAppLibrary\HotelAppLibrary.csproj" />
+    <ProjectReference Include="..\HotelAppLibrary\HotelAppLibrary.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,11 @@
-﻿using HotalAppLibrary.Databases;
-using HotalAppLibrary.Models;
+﻿using HotelAppLibrary.Databases;
+using HotelAppLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HotalAppLibrary.Data
+namespace HotelAppLibrary.Data
 {
     public class SQLData : IDatabaseData
     {

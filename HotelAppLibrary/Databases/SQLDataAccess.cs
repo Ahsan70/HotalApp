@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace HotalAppLibrary.Databases
+namespace HotelAppLibrary.Databases
 {
     public class SQLDataAccess : ISQLDataAccess
     {
