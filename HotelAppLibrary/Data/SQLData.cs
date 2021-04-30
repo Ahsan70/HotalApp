@@ -34,9 +34,9 @@ namespace HotelAppLibrary.Data
             GuestModel guest = _db.LoadData<GuestModel, dynamic>("dbo.spGuests_Insert",
                                                                   new { fristName, lastName },
                                                                   connectionStringName,
-                                                                  true).First();
-            string sqlStatement = "select * from dbo.RoomTypes where Id=@Id";
-            RoomTypeModel roomType = _db.LoadData<RoomTypeModel, dynamic>(sqlStatement,
+                                                                  true).FirstOrDefault();
+           
+            RoomTypeModel roomType = _db.LoadData<RoomTypeModel, dynamic>("select * from dbo.RoomTypes where Id=@Id",
                                                                           new { Id = roomTypeId },
                                                                           connectionStringName,
                                                                           false).First();
@@ -78,6 +78,15 @@ namespace HotelAppLibrary.Data
                          new { Id = bookingId },
                          connectionStringName,
                          true);
+        }
+
+
+        public RoomTypeModel GetRoomTypeById(int id)
+        {
+            return _db.LoadData<RoomTypeModel, dynamic>("dbo.spRoomTypes_GetById",
+                                                        new { id },
+                                                        connectionStringName,
+                                                        true).FirstOrDefault();
         }
     }
 }

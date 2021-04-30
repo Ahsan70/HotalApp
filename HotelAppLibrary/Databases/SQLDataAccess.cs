@@ -27,12 +27,10 @@ namespace HotelAppLibrary.Databases
             {
                 CommandType commandType = CommandType.Text;
 
-                if (!(isStoredProcedure = true))
-                {
-                }
-                else
+                if (isStoredProcedure == true)
                 {
                     commandType = CommandType.StoredProcedure;
+
                 }
                 List<T> rows = connection.Query<T>(sqlStatement,
                                                    parameters,
@@ -51,16 +49,15 @@ namespace HotelAppLibrary.Databases
             string connectionString = _configuration.GetConnectionString(connectionStringName);
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
+
                 CommandType commandType = CommandType.Text;
 
-
-                if (!(isStoredProcedure = true))
-                {
-                }
-                else
+                if (isStoredProcedure == true)
                 {
                     commandType = CommandType.StoredProcedure;
+
                 }
+             
                 connection.Execute(sqlStatement,
                                                     parameters,
                                                     commandType: commandType);
