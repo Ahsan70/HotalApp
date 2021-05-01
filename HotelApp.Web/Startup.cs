@@ -28,6 +28,7 @@ namespace HotelApp.Web
             services.AddRazorPages();
             services.AddTransient<IDatabaseData,SQLData>();
             services.AddTransient<ISQLDataAccess, SQLDataAccess>();
+            services.AddTransient<ISQLiteDataAccess, SQLiteDataAccess>();
 
         }
 
